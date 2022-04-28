@@ -10,24 +10,39 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, name, username, email, password=None):
+    def create_user(self, name, username, email, password=None, **extra_fields):
         if username is None:
-            raise TypeError("user must have username")
+            raise TypeError("superuser must have username")
         if name is None:
-            raise TypeError("user must have name")
+            raise TypeError("superuser must have name")
         if email is None:
-            raise TypeError("user must have email")
-        user = self.model(
-            username=username, name=name, email=self.normalize_email(email)
-        )
+            raise TypeError("superuser must have email")
+        if password is None:
+            raise TypeError("superuser must have password")
+        email = self.normalize_email(email)
+        user = self.model(email=email, username=username, name=name, **extra_fields)
         user.set_password(password)
         user.save()
         return user
 
-    def create_superuser(self, name, username, email, password):
-        user = self.create_user(name, username, email, password)
+    def create_superuser(self, name, username, email, password=None):
+        if username is None:
+            raise TypeError("superuser must have username")
+        if name is None:
+            raise TypeError("superuser must have name")
+        if email is None:
+            raise TypeError("superuser must have email")
+        if password is None:
+            raise TypeError("superuser must have password")
+        user = self.model(
+            name=name,
+            username=username,
+            email=self.normalize_email(email),
+        )
+        user.set_password(password)
         user.is_superuser = True
         user.is_staff = True
+        user.save()
         return user
 
 

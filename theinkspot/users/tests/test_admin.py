@@ -6,6 +6,7 @@ from theinkspot.users.models import User
 pytestmark = pytest.mark.django_db
 
 
+@pytest.mark.django_db
 class TestUserAdmin:
     def test_changelist(self, admin_client):
         url = reverse("admin:users_user_changelist")
@@ -25,7 +26,9 @@ class TestUserAdmin:
         response = admin_client.post(
             url,
             data={
-                "username": "test",
+                "name": "test user name",
+                "username": "testusername",
+                "email": "user@example.com",
                 "password1": "My_R@ndom-P@ssw0rd",
                 "password2": "My_R@ndom-P@ssw0rd",
             },
