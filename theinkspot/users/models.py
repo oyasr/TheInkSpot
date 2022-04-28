@@ -1,26 +1,30 @@
-from django.contrib.auth.models import AbstractUser
-from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 from django.db import models
-from django.utils.timezone import now
 from django.urls import reverse
+from django.utils.timezone import now
+from django.utils.translation import gettext_lazy as _
 
 
 class UserManager(BaseUserManager):
-    
-    def create_user(self, name, username, email, password = None):
+
+    def create_user(self, name, username, email, password=None):
         if username is None:
-            raise TypeError('user must have username') 
+            raise TypeError('user must have username')
         if name is None:
             raise TypeError('user must have name')
         if email is None:
             raise TypeError('user must have email')
-        user = self.model(username = username,
-                          name = name,
-                          email = self.normalize_email(email))
+        user = self.model(username=username,
+                          name=name,
+                          email=self.normalize_email(email))
         user.set_password(password)
         user.save()
         return user
+
 
 class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(_('User Full Name'), max_length=155)
@@ -33,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['name', 'email']
-    
+
     objects = UserManager()
 
     def get_absolute_url(self):
@@ -44,4 +48,4 @@ class User(AbstractBaseUser, PermissionsMixin):
         return reverse("users:detail", kwargs={"username": self.username})
 
     def __str__(self):
-        return self.username 
+        return self.username
