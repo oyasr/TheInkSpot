@@ -1,26 +1,53 @@
 from django.contrib.auth.models import AbstractUser
-from django.db.models import CharField
-from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
+from django.db import models
+from django.utils.timezone import now
 
 
-class User(AbstractUser):
-    """
-    Default custom user model for TheInkSpot.
-    If adding fields that need to be filled at user signup,
-    check forms.SignupForm and forms.SocialSignupForms accordingly.
-    """
+class UserManager(BaseUserManager):
+    
+    def create_user(self, name, username, email, password = None):
+        if username is None:
+            raise TypeError('user must have username') 
+        if name is None:
+            raise TypeError('user must have name')
+        if email is None:
+            raise TypeError('user must have email')
+        user = self.model(username = username,
+                          name = name,
+                          email = self.normalize_email(email))
+        user.set_password(password)
+        user.save()
+        return user
 
-    #: First and last name do not cover name patterns around the globe
-    name = CharField(_("Name of User"), blank=True, max_length=255)
-    first_name = None  # type: ignore
-    last_name = None  # type: ignore
+    def create_superuser(self, name, username, email, password = None):
+        if username is None:
+            raise TypeError('user must have username') 
+        if name is None:
+            raise TypeError('user must have name')
+        if email is None:
+            raise TypeError('user must have email')
 
-    def get_absolute_url(self):
-        """Get url for user's detail view.
+        user = self.create_user(name, username, email, password)
+        user.is_superuser = True
+        user.is_staff = True
+        user.save()
+        return user
 
-        Returns:
-            str: URL for user detail.
+class User(AbstractBaseUser, PermissionsMixin):
+    name = models.CharField(_('User Full Name'), max_length=155)
+    email = models.EmailField(max_length=255, unique=True)
+    username = models.CharField(_('Username'), max_length=155, unique=True)
+    is_verified = models.BooleanField(_('Is user verified by email'), default=False)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(default=now)
 
-        """
-        return reverse("users:detail", kwargs={"username": self.username})
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['name', 'email']
+    
+    objects = UserManager()
+    
+    def __str__(self):
+        return self.username 
