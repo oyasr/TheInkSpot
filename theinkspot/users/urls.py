@@ -1,10 +1,6 @@
 from django.urls import path
 
-from theinkspot.users.views import (
-    user_detail_view,
-    user_redirect_view,
-    user_update_view,
-)
+from theinkspot.users.views import user_detail_view, user_redirect_view, user_update_view, UserViewSet
 
 app_name = "users"
 urlpatterns = [

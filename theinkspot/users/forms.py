@@ -1,5 +1,6 @@
 from allauth.account.forms import SignupForm
 from allauth.socialaccount.forms import SignupForm as SocialSignupForm
+from django import forms
 from django.contrib.auth import forms as admin_forms
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
@@ -20,7 +21,8 @@ class UserAdminCreationForm(admin_forms.UserCreationForm):
 
     class Meta(admin_forms.UserCreationForm.Meta):
         model = User
-
+        email = forms.EmailField(label=_("Email"), max_length=255, required=True)
+        name = forms.CharField(label=_("Full name"), max_length=155, required=True)
         error_messages = {
             "username": {"unique": _("This username has already been taken.")}
         }
