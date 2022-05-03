@@ -11,11 +11,7 @@ from django.urls import reverse
 from theinkspot.users.forms import UserAdminChangeForm
 from theinkspot.users.models import User
 from theinkspot.users.tests.factories import UserFactory
-from theinkspot.users.views import (
-    UserRedirectView,
-    UserUpdateView,
-    user_detail_view,
-)
+from theinkspot.users.views import UserRedirectView, UserUpdateView, user_detail_view
 
 pytestmark = pytest.mark.django_db
 
