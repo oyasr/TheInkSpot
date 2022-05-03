@@ -15,6 +15,16 @@ def user(db) -> User:
     )
 
 
+@pytest.fixture
+def superuser(db) -> User:
+    return User.objects.create_superuser(
+        name="user name",
+        username="username",
+        email="test@email.com",
+        password="Am0123456789123456",
+    )
+
+
 @pytest.mark.django_db
 class TestUserModel:
     def test_update_user(self, user):
@@ -69,3 +79,15 @@ class TestUserModel:
     def test_is_verified_is_fasle_by_default(self, user):
         is_verified_defaulted_false = user._meta.get_field("is_verified").default
         assert is_verified_defaulted_false is False
+
+    def test_is_superuser_is_false_by_default(self, superuser):
+        is_superuser_defaulted_false = superuser._meta.get_field("is_superuser").default
+        assert is_superuser_defaulted_false is False
+
+    def test_is_staff_is_false_by_default(self, superuser):
+        is_staff_defaulted_false = superuser._meta.get_field("is_staff").default
+        assert is_staff_defaulted_false is False
+
+    def test_create_super_user(self, superuser):
+        is_user_a_superuser = superuser.is_superuser
+        assert is_user_a_superuser is True
