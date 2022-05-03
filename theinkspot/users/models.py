@@ -10,17 +10,17 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, name, username, email, password=None, **extra_fields):
+    def create_user(self, name, username, email, password=None):
         if username is None:
-            raise TypeError("superuser must have username")
+            raise TypeError("user must have username")
         if name is None:
-            raise TypeError("superuser must have name")
+            raise TypeError("user must have name")
         if email is None:
-            raise TypeError("superuser must have email")
+            raise TypeError("user must have email")
         if password is None:
-            raise TypeError("superuser must have password")
+            raise TypeError("user must have password")
         email = self.normalize_email(email)
-        user = self.model(email=email, username=username, name=name, **extra_fields)
+        user = self.model(email=email, username=username, name=name)
         user.set_password(password)
         user.save()
         return user
@@ -66,7 +66,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         Returns:
             str: URL for user detail.
         """
-        return reverse("users:allusers", kwargs={"username": self.username})
+        return reverse("users:detail", kwargs={"username": self.username})
 
     def __str__(self):
         return self.username
