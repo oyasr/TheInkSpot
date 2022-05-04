@@ -10,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, name, username, email, password=None):
+    def create_user(self, username, email, name="test", password=None):
         if username is None:
             raise TypeError("user must have username")
         if name is None:
@@ -25,7 +25,7 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
-    def create_superuser(self, name, username, email, password=None):
+    def create_superuser(self, username, email, name="test", password=None):
         if username is None:
             raise TypeError("superuser must have username")
         if name is None:
@@ -57,7 +57,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(default=now)
 
     USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ["name", "email"]
+    REQUIRED_FIELDS = ["name", "email", "username"]
 
     objects = UserManager()
 
