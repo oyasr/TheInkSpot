@@ -5,26 +5,6 @@ from theinkspot.users.models import User
 pytestmark = pytest.mark.django_db
 
 
-@pytest.fixture
-def user(db) -> User:
-    return User.objects.create_user(
-        name="user name",
-        username="username",
-        email="test@email.com",
-        password="Am0123456789123456",
-    )
-
-
-@pytest.fixture
-def superuser(db) -> User:
-    return User.objects.create_superuser(
-        name="user name",
-        username="username",
-        email="test@email.com",
-        password="Am0123456789123456",
-    )
-
-
 @pytest.mark.django_db
 class TestUserModel:
     def test_user_get_absolute_url(self, user):
