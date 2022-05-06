@@ -21,6 +21,6 @@ app_name = "api"
 urlpatterns = router.urls
 
 urlpatterns += [
-    path('access/token/', jwt_views.TokenObtainPairView.as_view(),name='access token'),
+    path('token/', jwt_views.TokenObtainPairView.as_view(),name='access token'),
     path('refresh/token/', jwt_views.TokenRefreshView.as_view(),name='refresh token'),
 ]
