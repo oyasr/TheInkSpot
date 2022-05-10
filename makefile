@@ -37,10 +37,10 @@ logs:
 	docker-compose -f local.yml logs -f $(filter-out $@,$(MAKECMDGOALS))
 
 test:
-	docker-compose -f local.yml run --service-ports --rm -e DEBUGGER=True -e DJANGO_SETTINGS_MODULE=config.settings.test django python manage.py test $(filter-out $@,$(MAKECMDGOALS))
+	docker-compose -f local.yml run --service-ports --rm -e DEBUGGER=True -e DJANGO_SETTINGS_MODULE=config.settings.test django pytest $(filter-out $@,$(MAKECMDGOALS))
 
 test_local:
-	docker-compose -f local.yml exec -e DJANGO_SETTINGS_MODULE=config.settings.test django /entrypoint python manage.py test $(filter-out $@,$(MAKECMDGOALS))
+	docker-compose -f local.yml exec -e DJANGO_SETTINGS_MODULE=config.settings.test django /entrypoint pytest $(filter-out $@,$(MAKECMDGOALS))
 
 debug:
 	docker-compose -f local.yml run --service-ports --rm $(filter-out $@,$(MAKECMDGOALS))
