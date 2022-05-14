@@ -71,8 +71,16 @@ class RegisterUser(serializers.ModelSerializer):
 
     def create(self, validation_data):
         return User.objects.create_user(
-            validation_data["name"],
-            validation_data["username"],
-            validation_data["email"],
-            validation_data["password"],
+            name=validation_data["name"],
+            username=validation_data["username"],
+            email=validation_data["email"],
+            password=validation_data["password"],
         )
+
+
+class EmailVerificatoinSerializer(serializers.ModelSerializer):
+    token = serializers.CharField(max_length=555)
+
+    class Meta:
+        model = User
+        fields = ["token"]
