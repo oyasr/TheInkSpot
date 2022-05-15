@@ -1,0 +1,227 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-22 15:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+msgid "Account Inactive"
+msgstr ""
+
+msgid "This account is inactive."
+msgstr ""
+
+msgid "Account"
+msgstr ""
+
+msgid "E-mail Addresses"
+msgstr ""
+
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+msgid "Verified"
+msgstr ""
+
+msgid "Unverified"
+msgstr ""
+
+msgid "Primary"
+msgstr ""
+
+msgid "Make Primary"
+msgstr ""
+
+msgid "Re-send Verification"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Warning:"
+msgstr ""
+
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+msgid "Add E-mail Address"
+msgstr ""
+
+msgid "Add E-mail"
+msgstr ""
+
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+msgid "Sign In"
+msgstr ""
+
+msgid "Please sign in with one of your existing third party accounts:"
+msgstr ""
+
+#, python-format
+msgid ""
+"Or, <a href=\"%(signup_url)s\">sign up</a> for a %(site_name)s account and "
+"sign in below:"
+msgstr ""
+
+msgid "or"
+msgstr ""
+
+#, python-format
+msgid ""
+"If you have not created an account yet, then please <a href=\"%(signup_url)s"
+"\">sign up</a> first."
+msgstr ""
+
+msgid "Forgot Password?"
+msgstr ""
+
+msgid "Sign Out"
+msgstr ""
+
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+msgid "Change Password"
+msgstr ""
+
+msgid "Password Reset"
+msgstr ""
+
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+msgid "Reset My Password"
+msgstr ""
+
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+msgid "Bad Token"
+msgstr ""
+
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+msgid "change password"
+msgstr ""
+
+msgid "Your password is now changed."
+msgstr ""
+
+msgid "Set Password"
+msgstr ""
+
+msgid "Signup"
+msgstr ""
+
+msgid "Sign Up"
+msgstr ""
+
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+msgid "Sign Up Closed"
+msgstr ""
+
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+msgid "My Profile"
+msgstr ""
+
+msgid "Personal info"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Important dates"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "This username has already been taken."
+msgstr ""
+
+msgid "Name of User"
+msgstr ""
+
+msgid "Information successfully updated"
+msgstr ""
