@@ -47,8 +47,9 @@ class RegisterUsers(generics.GenericAPIView):
         absurl = "http://" + current_site + relative_link + "?token=" + str(token)
         email_body = (
             "Hi "
-            + user.username
-            + " Please use the link below to verify your email \n"
+            + user.name.split(" ")[0]
+            + ",\n"
+            + "Thank you for registering with us, Please use the link below to verify your email address \n"
             + absurl
         )
         email_subject = "Verify your email address"

@@ -220,6 +220,8 @@ EMAIL_BACKEND = env(
     "DJANGO_EMAIL_BACKEND",
     default="django.core.mail.backends.smtp.EmailBackend",
 )
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
 EMAIL_TIMEOUT = 5
 
@@ -325,8 +327,5 @@ SPECTACULAR_SETTINGS = {
 # Your stuff...
 # ------------------------------------------------------------------------------
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_HOST_USER = "the.ink.spot117@gmail.com"
-EMAIL_HOST_PASSWORD = "MSa01155217475"
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 8025
